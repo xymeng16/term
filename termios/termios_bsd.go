@@ -1,3 +1,4 @@
+//go:build darwin || freebsd || openbsd || netbsd || dragonfly
 // +build darwin freebsd openbsd netbsd dragonfly
 
 package termios
@@ -9,12 +10,14 @@ import (
 )
 
 const (
+	ICANON     = 0x00000100
 	IXON       = 0x00000200
 	IXOFF      = 0x00000400
 	IXANY      = 0x00000800
 	CCTS_OFLOW = 0x00010000
 	CRTS_IFLOW = 0x00020000
 	CRTSCTS    = CCTS_OFLOW | CRTS_IFLOW
+	ECHO       = 0x00000008
 )
 
 // Tcgetattr gets the current serial port settings.
